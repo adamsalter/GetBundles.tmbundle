@@ -147,7 +147,7 @@ def installZIP(name, path, zip_path)
     GBTimeout::timeout($timeout) do
       begin
 
-        if path =~ /^http:\/\/github\.com/  # hosted on github ?
+        if path =~ /^https?:\/\/github\.com/  # hosted on github ?
           executeShell(%Q{
 if curl -sSLo "#{$tempDir}/archive.zip" "#{path}"; then
   if unzip --q "#{$tempDir}/archive.zip" -d "#{$tempDir}"; then
@@ -203,7 +203,7 @@ def installTAR(name, path, zip_path)
     GBTimeout::timeout($timeout) do
       begin
 
-        if path =~ /^http:\/\/github\.com/  # hosted on github ?
+        if path =~ /^https?:\/\/github\.com/  # hosted on github ?
           # usr, nm = path.split('/')[3..4]
           # ghid = YAML.load(open("http://github.com/api/v1/json/#{usr}/#{nm}/commits/master"))['commits'].first['id']
           executeShell(%Q{
